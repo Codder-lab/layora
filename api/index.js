@@ -1,6 +1,11 @@
 import axios from "axios";
+import Constants from "expo-constants";
 
-const API_KEY = process.env.PIXABAY_API_KEY;
+const API_KEY = Constants.expoConfig.extra.PIXABAY_API_KEY;
+
+if (!API_KEY) {
+  throw new Error("Pixabay API key is missing.");
+}
 
 const apiUrl = `https://pixabay.com/api/?key=${API_KEY}`;
 
